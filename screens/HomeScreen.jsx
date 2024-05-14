@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as icons from "react-native-heroicons/outline";
@@ -62,7 +63,7 @@ export default HomeScreen = () => {
             </Pressable>
           </View>
           {locations.length > 0 && searchVisible ? (
-            <View className="absolute w-full bg-gray-300 top-16 rounded-3xl">
+            <View className="absolute w-full bg-gray-300/90 top-16 rounded-3xl">
               {locations.map((loc, index) => {
                 let showBorder = index + 1 != locations.length;
 
@@ -132,17 +133,78 @@ export default HomeScreen = () => {
             </View>
             <View className="flex-row space-x-2 items-center">
               <Image
-                source={require("../assets/icons/drop.png")}
+                source={require("../assets/icons/sun.png")}
                 className="h-6 w-6"
               ></Image>
               <Text className="text-white font-semibold text-base">
-                {" "}
                 6:05 AM
               </Text>
             </View>
           </View>
         </View>
         {/* // #endregion */}
+        {/* // #region FORECAST =================================== */}
+        <View className="mb-2 space-y-3">
+          <View className="flex-row items-center mx-5 space-x-2">
+            <icons.CalendarDaysIcon
+              color={"white"}
+              size="22"
+            ></icons.CalendarDaysIcon>
+            <Text className="text-white text-base">daily forcast</Text>
+          </View>
+
+          <ScrollView
+            horizontal
+            contentContainerStyle={{ paddingHorizontal: 15 }}
+            showsHorizontalScrollIndicator={false}
+          >
+            <View className="flex justify-center items-center w-24 rounded-3xl py-3 space-y-3 bg-slate-400/20 mr-4">
+              <Image
+                source={require("../assets/images/heavyrain.png")}
+                className="w-11 h-11"
+              ></Image>
+              <Text className="text-white">Monday</Text>
+              <Text className="text-white text-xl">23&#176;</Text>
+            </View>
+
+            <View className="flex justify-center items-center w-24 rounded-3xl py-3 space-y-3 bg-slate-400/20 mr-4">
+              <Image
+                source={require("../assets/images/heavyrain.png")}
+                className="w-11 h-11"
+              ></Image>
+              <Text className="text-white">Monday</Text>
+              <Text className="text-white text-xl">23&#176;</Text>
+            </View>
+
+            <View className="flex justify-center items-center w-24 rounded-3xl py-3 space-y-3 bg-slate-400/20 mr-4">
+              <Image
+                source={require("../assets/images/heavyrain.png")}
+                className="w-11 h-11"
+              ></Image>
+              <Text className="text-white">Monday</Text>
+              <Text className="text-white text-xl">23&#176;</Text>
+            </View>
+
+            <View className="flex justify-center items-center w-24 rounded-3xl py-3 space-y-3 bg-slate-400/20 mr-4">
+              <Image
+                source={require("../assets/images/heavyrain.png")}
+                className="w-11 h-11"
+              ></Image>
+              <Text className="text-white">Monday</Text>
+              <Text className="text-white text-xl">23&#176;</Text>
+            </View>
+
+            <View className="flex justify-center items-center w-24 rounded-3xl py-3 space-y-3 bg-slate-400/20">
+              <Image
+                source={require("../assets/images/heavyrain.png")}
+                className="w-11 h-11"
+              ></Image>
+              <Text className="text-white">Monday</Text>
+              <Text className="text-white text-xl">23&#176;</Text>
+            </View>
+          </ScrollView>
+        </View>
+        {/* // #endregion*/}
       </SafeAreaView>
     </View>
   );
