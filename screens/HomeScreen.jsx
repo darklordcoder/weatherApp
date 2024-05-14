@@ -11,11 +11,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as icons from "react-native-heroicons/outline";
 import { Pressable } from "react-native";
 import { useState } from "react";
+import * as Device from "expo-device";
 
 export default HomeScreen = () => {
   const [searchVisible, toggleSearchVisible] = useState(false);
   const [locations, setLocations] = useState([0, 1, 2, 3]);
 
+  const handleLocation = (loc) => {
+    console.log("Location: " + loc);
+  };
+  let marginTop = Device.osName !== "iOS" ? "mt-2" : "";
   return (
     <View className="flex-1 relative">
       <StatusBar style="light" />
@@ -25,7 +30,11 @@ export default HomeScreen = () => {
         className="absolute h-full w-full z-1"
       />
       <SafeAreaView className="flex flex-1">
-        <View style={{ height: "7%" }} className="mx-4 relative z-50 ">
+        {/* // #region Search Bar =========================================== */}
+        <View
+          style={{ height: "7%" }}
+          className={"mx-4 relative z-50 " + marginTop}
+        >
           <View
             className={"flex-row justify-end items-center rounded-full "}
             style={{
@@ -67,14 +76,73 @@ export default HomeScreen = () => {
                       "flex-row items-center border-0 p-3 pl-8 mb-1 " +
                       borderClass
                     }
+                    onPress={() => {
+                      handleLocation(loc);
+                    }}
                   >
-                    <Text>London, United Kingdom</Text>
+                    <Text className="text-black font-bold text-lg ml-2">
+                      London, United Kingdom
+                    </Text>
                   </TouchableOpacity>
                 );
               })}
             </View>
           ) : null}
         </View>
+        {/* // #endregion  */}
+        {/* // #region FORECAST =================================== */}
+        <View className="mx-4 flex justify-around flex-1 mb-2">
+          <Text className="text-white text-center text-2xl font-bold">
+            London,
+            <Text className="text-lg font-semibold text-gray-300">
+              {" "}
+              United Kingdom
+            </Text>
+          </Text>
+
+          <View className="flex-row justify-center">
+            <Image
+              source={require("../assets/images/partlycloudy.png")}
+              className="w-52 h-52"
+            ></Image>
+          </View>
+          <View className="space-y-2">
+            <Text className="text-center font-bold text-white text-6xl ml-5">
+              23°
+            </Text>
+            <Text className="text-center text-white text-xl tracking-widest">
+              Part Cloudly
+            </Text>
+          </View>
+
+          <View className="flex-row justify-between mx-4">
+            <View className="flex-row space-x-2 items-center">
+              <Image
+                source={require("../assets/icons/wind.png")}
+                className="h-6 w-6"
+              ></Image>
+              <Text className="text-white font-semibold text-base">22km</Text>
+            </View>
+            <View className="flex-row space-x-2 items-center">
+              <Image
+                source={require("../assets/icons/drop.png")}
+                className="h-6 w-6"
+              ></Image>
+              <Text className="text-white font-semibold text-base">23 %</Text>
+            </View>
+            <View className="flex-row space-x-2 items-center">
+              <Image
+                source={require("../assets/icons/drop.png")}
+                className="h-6 w-6"
+              ></Image>
+              <Text className="text-white font-semibold text-base">
+                {" "}
+                6:05 AM
+              </Text>
+            </View>
+          </View>
+        </View>
+        {/* // #endregion */}
       </SafeAreaView>
     </View>
   );
