@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "675449311251",
+    "project_id": "movies-c3f0e",
+    "storage_bucket": "movies-c3f0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675449311251:android:70874318f1e69401b0efe6",
+        "android_client_info": {
+          "package_name": "com.darklordcoder.tutorial.movies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWST5nkLSm-kKWGRyT-lAEstg8ycvMQnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675449311251:android:3aff67aabbd3ed84b0efe6",
+        "android_client_info": {
+          "package_name": "com.darklordcoder.tutorial.weather"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWST5nkLSm-kKWGRyT-lAEstg8ycvMQnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

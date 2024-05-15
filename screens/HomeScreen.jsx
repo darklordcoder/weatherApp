@@ -14,7 +14,11 @@ import { Pressable } from "react-native";
 import { useCallback, useEffect, useState } from "react";
 import * as Device from "expo-device";
 import { debounce } from "lodash";
-import { fetchLocations, fetchWeatherForecast } from "../api/weather";
+import {
+  fetchLocations,
+  fetchWeatherForecast,
+  weatherImage,
+} from "../api/weather";
 
 export default HomeScreen = () => {
   const [searchVisible, toggleSearchVisible] = useState(false);
@@ -32,7 +36,7 @@ export default HomeScreen = () => {
   const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []);
   const fechData = (param) => {
     fetchWeatherForecast({ city: param, days: 7 }).then((data) => {
-      console.log(data.forecast.forecastday);
+      console.log(data);
       setLocation(data.location);
       setCurrentWeather(data.current);
       setForecast(data.forecast);
@@ -90,9 +94,9 @@ export default HomeScreen = () => {
               ></icons.MagnifyingGlassIcon>
             </Pressable>
           </View>
-          {locations.length > 0 && searchVisible ? (
+          {locations?.length > 0 && searchVisible ? (
             <View className="absolute w-full bg-gray-300/90 top-16 rounded-3xl">
-              {locations.map((loc, index) => {
+              {locations?.map((loc, index) => {
                 let showBorder = index + 1 != locations.length;
 
                 let borderClass = showBorder
@@ -131,9 +135,7 @@ export default HomeScreen = () => {
           <View className="flex-row justify-center">
             <Image
               source={{
-                uri:
-                  "http:" +
-                  currentWeather?.condition?.icon.replace("64x64", "128x128"),
+                uri: weatherImage(currentWeather?.condition?.icon),
               }}
               className="w-52 h-52"
             ></Image>
@@ -201,9 +203,7 @@ export default HomeScreen = () => {
                 >
                   <Image
                     source={{
-                      uri:
-                        "http:" +
-                        item?.day?.condition?.icon.replace("64x64", "128x128"),
+                      uri: weatherImage(item?.day?.condition?.icon),
                     }}
                     className="w-11 h-11"
                   ></Image>

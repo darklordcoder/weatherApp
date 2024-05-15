@@ -16,8 +16,9 @@
     },
     "android": {
       "package": "com.darklordcoder.tutorial.weather",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/iconapp.png",
         "backgroundColor": "#ffffff"
       }
     },
